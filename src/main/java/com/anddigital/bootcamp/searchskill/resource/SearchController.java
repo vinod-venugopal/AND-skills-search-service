@@ -14,7 +14,7 @@ import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
 import com.anddigital.bootcamp.searchskill.clientengagement.SearchResultsNotFoundException;
 import com.anddigital.bootcamp.searchskill.repository.SearchRepository;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class SearchController {
 
