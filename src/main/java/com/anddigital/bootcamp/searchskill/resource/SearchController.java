@@ -1,5 +1,6 @@
 package com.anddigital.bootcamp.searchskill.resource;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,12 @@ public class SearchController {
 		return searchResults;
 	}
 	
-
+	@GetMapping(path="/searchByPrediction/{searchText}")
+	public List<String> searchByPrediction(@PathVariable String searchText){
+		String likeCapability = "%" + searchText + "%";
+		List<String> searchResults = searchRepository.searchByPrediction(likeCapability,searchText);
+		Collections.sort(searchResults);
+		return searchResults;
+	}
 	
 }
