@@ -8,8 +8,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
-import com.anddigital.bootcamp.searchskill.clientengagement.SearchResultsNotFoundException;
+import com.anddigital.bootcamp.searchskill.exception.SearchResultsNotFoundException;
 import com.anddigital.bootcamp.searchskill.repository.SearchRepository;
+import com.fasterxml.jackson.core.JsonGenerationException;
 
 @Service
 public class SearchServiceImpl implements SearchService {

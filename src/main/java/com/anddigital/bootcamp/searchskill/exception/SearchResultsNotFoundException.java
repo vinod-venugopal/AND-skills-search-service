@@ -1,4 +1,4 @@
-package com.anddigital.bootcamp.searchskill.clientengagement;
+package com.anddigital.bootcamp.searchskill.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

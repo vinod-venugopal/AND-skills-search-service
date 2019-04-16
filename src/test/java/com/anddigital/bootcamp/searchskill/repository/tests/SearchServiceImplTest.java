@@ -17,7 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
-import com.anddigital.bootcamp.searchskill.clientengagement.SearchResultsNotFoundException;
+import com.anddigital.bootcamp.searchskill.exception.SearchResultsNotFoundException;
 import com.anddigital.bootcamp.searchskill.repository.SearchRepository;
 import com.anddigital.bootcamp.searchskill.service.SearchService;
 
