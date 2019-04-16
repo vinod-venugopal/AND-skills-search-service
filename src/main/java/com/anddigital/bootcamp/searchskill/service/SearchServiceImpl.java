@@ -16,7 +16,7 @@ public class SearchServiceImpl implements SearchService {
 
 	@Autowired
 	private SearchRepository searchRepository;
-	
+
 	public SearchServiceImpl() {
 	}
 
@@ -27,6 +27,9 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public List<ClientEngagement> searchBySearchText(String searchText){
+		if(!searchText.isEmpty()) {
+			searchText = searchText.toLowerCase();
+		}
 		String likeCapability = "%" + searchText + "%";
 		List<ClientEngagement> searchResults = searchRepository.searchBySearchText(new Sort("clientName"),likeCapability,searchText);
 		if(searchResults.isEmpty()) {
@@ -38,7 +41,7 @@ public class SearchServiceImpl implements SearchService {
 	@Override
 	public List<String> searchByPrediction(String searchText) {
 		String likeSearchText = "%" + searchText + "%";
-		List<String> searchResults = searchRepository.searchByPrediction(likeSearchText);
+		List<String> searchResults = searchRepository.searchByPrediction(likeSearchText.toLowerCase());
 		Collections.sort(searchResults);
 		return searchResults;
 	}

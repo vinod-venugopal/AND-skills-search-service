@@ -14,13 +14,13 @@ import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
 public interface SearchRepository extends JpaRepository<ClientEngagement, Integer> {
 
 
-	@Query("Select r from ClientEngagement r where capability like :likeCapability or clientName = :searchText or industry = :searchText or projectName = :searchText")
+	@Query("Select r from ClientEngagement r where lower(capability) like :likeCapability or lower(clientName) = :searchText or lower(industry) = :searchText or lower(projectName) = :searchText")
 	List<ClientEngagement> searchBySearchText(Sort sort,@Param("likeCapability") String likeCapability,@Param("searchText") String searchText);
 	
 	
-	@Query(value="Select r.client_name from client_engagement r where client_name like :likeSearchText union "
-			+ "Select r.industry from client_engagement r where industry like :likeSearchText union "
-			+ "Select r.project_name from client_engagement r where project_name like :likeSearchText",nativeQuery = true)
+	@Query(value="Select r.client_name from client_engagement r where lower(client_name) like :likeSearchText union "
+			+ "Select r.industry from client_engagement r where lower(industry) like :likeSearchText union "
+			+ "Select r.project_name from client_engagement r where lower(project_name) like :likeSearchText",nativeQuery = true)
 	List<String> searchByPrediction(@Param("likeSearchText") String likeSearchText);
 	
 
