@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -17,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
 import com.anddigital.bootcamp.searchskill.clientengagement.SearchResultsNotFoundException;
+import com.anddigital.bootcamp.searchskill.repository.SearchRepository;
 import com.anddigital.bootcamp.searchskill.service.SearchService;
 
 @RunWith(SpringRunner.class)
@@ -25,7 +27,7 @@ public class SearchServiceImplTest {
 
 	@MockBean
 	private SearchService searchService;
-
+	
 	List<ClientEngagement> clientEngagements;
 
 
@@ -84,13 +86,21 @@ public class SearchServiceImplTest {
 	public void whenNoResultsFound_thenThrowsException() {
 		String errorMessage = null;
 		try {
-		String capability = "Tosca";
-		errorMessage = "Sorry,We Couldn't find any results matching or like < " + capability + " >";
-		searchService.searchBySearchText(capability);
+			String capability = "Tosca";
+			errorMessage = "Sorry,We Couldn't find any results matching or like < " + capability + " >";
+			searchService.searchBySearchText(capability);
 		}
 		catch(SearchResultsNotFoundException se) {
 			assertEquals(se.getMessage(),errorMessage);
 		}
-		}
+	}
 	
+	@Test
+	public void whenSearchByPrediction_thenReturnStringList() {
+		String predictiveStr = "S";
+		List<String> predictiveResults = searchService.searchByPrediction(predictiveStr);
+		assertNotNull(predictiveResults);
+		assertTrue(predictiveResults.isEmpty());
+	}
+
 }
