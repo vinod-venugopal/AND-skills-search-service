@@ -7,33 +7,35 @@ import javax.persistence.Id;
 @Entity
 public class ClientEngagement {
 
-	
+
 	@Id
 	@GeneratedValue
 	private Integer clientEngagementId;
-	
+
 	private String clientName;
 
 	private String serviceOwner;
-	
+
 	private String pdl;
-	
+
 	private String projectName;
-	
+
 	private String engagementType;
-	
+
 	private String industry;
-	
+
 	private String capability;
-	
+
 	private String caseStudy;
+
+	private String link;
 
 	public ClientEngagement() {
 		super();
 	}
 
 	public ClientEngagement(Integer clientEngagementId, String clientName, String serviceOwner, String pdl,
-			String projectName, String engagementType, String industry, String capability, String caseStudy) {
+			String projectName, String engagementType, String industry, String capability, String caseStudy,String link) {
 		super();
 		this.clientEngagementId = clientEngagementId;
 		this.clientName = clientName;
@@ -44,6 +46,7 @@ public class ClientEngagement {
 		this.industry = industry;
 		this.capability = capability;
 		this.caseStudy = caseStudy;
+		this.link = link;
 	}
 
 	public Integer getClientEngagementId() {
@@ -119,16 +122,21 @@ public class ClientEngagement {
 		this.caseStudy = caseStudy;
 	}
 
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
 	@Override
 	public String toString() {
 		return "ClientEngagement [clientEngagementId=" + clientEngagementId + ", clientName=" + clientName
 				+ ", serviceOwner=" + serviceOwner + ", pdl=" + pdl + ", projectName=" + projectName
 				+ ", engagementType=" + engagementType + ", industry=" + industry + ", capability=" + capability
-				+ ", case_study=" + caseStudy + "]";
+				+ ", caseStudy=" + caseStudy + ", link=" + link + "]";
 	}
-	
-	
-	
-	
+
 
 }

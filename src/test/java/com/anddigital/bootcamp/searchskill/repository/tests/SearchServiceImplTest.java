@@ -33,7 +33,7 @@ public class SearchServiceImplTest {
 
 	@Before
 	public void setUp() {
-		ClientEngagement clientEngagement = new ClientEngagement(1001,"Allen and Overy","Phil","Sunil","Anti-Origami","Discovery (Specific idea)","Law","Scrum","Y");
+		ClientEngagement clientEngagement = new ClientEngagement(1001,"Allen and Overy","Phil","Sunil","Anti-Origami","Discovery (Specific idea)","Law","Scrum","Y","");
 		clientEngagements = new ArrayList<ClientEngagement>();
 		clientEngagements.add(clientEngagement);
 	}
