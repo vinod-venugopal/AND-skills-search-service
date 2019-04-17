@@ -32,7 +32,7 @@ public class SearchServiceImpl implements SearchService {
 		if(!searchText.isEmpty()) {
 			lowerCaseText = searchText.toLowerCase();
 		}
-		String likeCapability = "%" + searchText + "%";
+		String likeCapability = "%" + lowerCaseText + "%";
 		List<ClientEngagement> searchResults = searchRepository.searchBySearchText(new Sort("clientName"),likeCapability,lowerCaseText);
 		if(searchResults.isEmpty()) {
 			throw new SearchResultsNotFoundException("Sorry, we couldn't find any results matching or like < " + searchText + " >");
