@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
+import com.anddigital.bootcamp.searchskill.clientengagement.SuggestedResult;
 import com.anddigital.bootcamp.searchskill.exception.SearchResultsNotFoundException;
 import com.anddigital.bootcamp.searchskill.repository.SearchRepository;
 import com.anddigital.bootcamp.searchskill.service.SearchService;
@@ -98,7 +99,7 @@ public class SearchServiceImplTest {
 	@Test
 	public void whenSearchByPrediction_thenReturnStringList() {
 		String predictiveStr = "S";
-		List<String> predictiveResults = searchService.searchByPrediction(predictiveStr);
+		List<SuggestedResult> predictiveResults = searchService.searchByPrediction(predictiveStr);
 		assertNotNull(predictiveResults);
 		assertTrue(predictiveResults.isEmpty());
 	}
