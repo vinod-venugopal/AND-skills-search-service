@@ -28,13 +28,14 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public List<ClientEngagement> searchBySearchText(String searchText){
+		String lowerCaseText="";
 		if(!searchText.isEmpty()) {
-			searchText = searchText.toLowerCase();
+			lowerCaseText = searchText.toLowerCase();
 		}
 		String likeCapability = "%" + searchText + "%";
-		List<ClientEngagement> searchResults = searchRepository.searchBySearchText(new Sort("clientName"),likeCapability,searchText);
+		List<ClientEngagement> searchResults = searchRepository.searchBySearchText(new Sort("clientName"),likeCapability,lowerCaseText);
 		if(searchResults.isEmpty()) {
-			throw new SearchResultsNotFoundException("Sorry,We Couldn't find any results matching or like < " + searchText + " >");
+			throw new SearchResultsNotFoundException("Sorry, we couldn't find any results matching or like < " + searchText + " >");
 		}
 		return searchResults;
 	}
