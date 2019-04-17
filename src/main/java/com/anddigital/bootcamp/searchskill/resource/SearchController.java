@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
+import com.anddigital.bootcamp.searchskill.clientengagement.SuggestedResult;
 import com.anddigital.bootcamp.searchskill.service.SearchService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -44,7 +45,7 @@ public class SearchController {
 	 * @return list of client engagements
 	 */
 	@GetMapping(path="/searchByPrediction/{searchText}")
-	public List<String> searchByPrediction(@PathVariable String searchText){
+	public List<SuggestedResult> searchByPrediction(@PathVariable String searchText){
 		return searchService.searchByPrediction(searchText);
 	}
 	

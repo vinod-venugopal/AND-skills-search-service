@@ -2,6 +2,7 @@ package com.anddigital.bootcamp.searchskill.service;
 
 import java.util.List;
 import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
+import com.anddigital.bootcamp.searchskill.clientengagement.SuggestedResult;
 import com.anddigital.bootcamp.searchskill.exception.SearchResultsNotFoundException;
 
 public interface SearchService {
@@ -10,6 +11,6 @@ public interface SearchService {
 	
 	 List<ClientEngagement> searchBySearchText(String searchText);
 	 
-	 List<String> searchByPrediction (String searchText);
+	 List<SuggestedResult> searchByPrediction (String searchText);
 	
 }

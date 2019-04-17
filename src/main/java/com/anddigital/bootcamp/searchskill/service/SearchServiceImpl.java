@@ -1,5 +1,6 @@
 package com.anddigital.bootcamp.searchskill.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
+import com.anddigital.bootcamp.searchskill.clientengagement.SuggestedResult;
 import com.anddigital.bootcamp.searchskill.exception.SearchResultsNotFoundException;
 import com.anddigital.bootcamp.searchskill.repository.SearchRepository;
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -41,11 +43,17 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public List<String> searchByPrediction(String searchText) {
+	public List<SuggestedResult> searchByPrediction(String searchText) {
 		String likeSearchText = "%" + searchText + "%";
-		List<String> searchResults = searchRepository.searchByPrediction(likeSearchText.toLowerCase());
+		List<String> searchResults = searchRepository.searchByPrediction(likeSearchText.toLowerCase());	
 		Collections.sort(searchResults);
-		return searchResults;
+		List<SuggestedResult> suggestedResults = new ArrayList<SuggestedResult>();
+		for(String result: searchResults) {
+			SuggestedResult sr = new SuggestedResult();
+			sr.setSuggestedText(result);
+			suggestedResults.add(sr);
+		}
+		return suggestedResults;
 	}
 
 }

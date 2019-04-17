@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.anddigital.bootcamp.searchskill.clientengagement.ClientEngagement;
+import com.anddigital.bootcamp.searchskill.clientengagement.SuggestedResult;
 
 @Repository
 public interface SearchRepository extends JpaRepository<ClientEngagement, Integer> {
