@@ -44,7 +44,7 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public List<SuggestedResult> searchByPrediction(String searchText) {
-		String likeSearchText = "%" + searchText + "%";
+		String likeSearchText = searchText + "%";
 		List<String> searchResults = searchRepository.searchByPrediction(likeSearchText.toLowerCase());	
 		Collections.sort(searchResults);
 		List<SuggestedResult> suggestedResults = new ArrayList<SuggestedResult>();
